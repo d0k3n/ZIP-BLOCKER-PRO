@@ -1,0 +1,17 @@
+api_version = "2025-07"
+
+[[extensions]]
+name = "t:name"
+handle = "zip-validator"
+type = "function"
+uid = "dbe3331d-50a9-d3f1-3a9a-ab9f3118e8f5572f9e41"
+description = "t:description"
+
+  [[extensions.targeting]]
+  target = "purchase.validation.run"
+  input_query = "src/cart_validations_generate_run.graphql"
+  export = "run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"

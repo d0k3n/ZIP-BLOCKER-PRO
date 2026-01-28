@@ -1,0 +1,7 @@
+{
+  "buildCommand": "npx prisma generate && npm run build",
+  "framework": "remix",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}

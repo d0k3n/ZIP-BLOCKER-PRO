@@ -1,0 +1,15 @@
+query RunInput {
+  cart {
+    deliveryGroups {
+      deliveryAddress {
+        zip
+        countryCode
+      }
+    }
+  }
+  shop {
+    metafield(namespace: "zip_blocker", key: "config") {
+      value
+    }
+  }
+}

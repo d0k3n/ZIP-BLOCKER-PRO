@@ -1,0 +1,9 @@
+zip-blocker-db
+wrPpUX7%$&iy/Je
+
+
+# Connect to Supabase via connection pooling
+DATABASE_URL="postgresql://postgres.yfidgovetijhdyylrmxd:wrPpUX7%$&iy/Je@aws-1-us-west-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# Direct connection to the database. Used for migrations
+DIRECT_URL="postgresql://postgres.yfidgovetijhdyylrmxd:wrPpUX7%$&iy/Je@aws-1-us-west-1.pooler.supabase.com:5432/postgres"
