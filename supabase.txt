@@ -1,5 +1,5 @@
 zip-blocker-db
-Dk58e8MJ65ZpkNZ8
+U8iYcXC9JxdeWEC3
 
 
 # Connect to Supabase via connection pooling
