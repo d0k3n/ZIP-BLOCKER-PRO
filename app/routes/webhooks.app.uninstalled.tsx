@@ -7,10 +7,26 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   console.log(`Received ${topic} webhook for ${shop}`);
 
-  // Webhook requests can trigger multiple times and after an app has already been uninstalled.
-  // If this webhook already ran, the session may have been deleted previously.
-  if (session) {
-    await db.session.deleteMany({ where: { shop } });
+  const topicStr = String(topic);
+  switch (topicStr) {
+    case "APP_UNINSTALLED":
+    case "app/uninstalled":
+    case "shop/redact":
+    case "SHOP_REDACT":
+      // Delete all data for this shop. shop/redact is sent 48h after uninstall.
+      if (session) {
+        await db.session.deleteMany({ where: { shop } });
+      }
+      break;
+    case "customers/data_request":
+    case "CUSTOMERS_DATA_REQUEST":
+    case "customers/redact":
+    case "CUSTOMERS_REDACT":
+      // We don't store customer data; blocked zips are shop config in metafields.
+      // Acknowledge receipt to comply with mandatory webhooks.
+      break;
+    default:
+      break;
   }
 
   return new Response();
