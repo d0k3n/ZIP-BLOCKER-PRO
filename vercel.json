@@ -1,6 +1,6 @@
 {
   "buildCommand": "npx prisma generate && npm run build",
-  "framework": "remix",
+  "framework": "react-router",
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ]
