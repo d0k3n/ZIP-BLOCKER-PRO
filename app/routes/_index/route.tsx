@@ -1,5 +1,5 @@
 import type { LoaderFunctionArgs } from "react-router";
-import { redirect, Form, useLoaderData } from "react-router";
+import { redirect, Form, useLoaderData, Link } from "react-router";
 
 import { login } from "../../shopify.server";
 
@@ -51,6 +51,9 @@ export default function App() {
             its benefit to your customer.
           </li>
         </ul>
+        <p style={{ marginTop: "2rem" }}>
+          <Link to="/privacy">Privacy Policy</Link>
+        </p>
       </div>
     </div>
   );
