@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import styles from "./privacy.styles.module.css";
+import styles from "./styles.module.css";
 
 export default function Privacy() {
   return (
