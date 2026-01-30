@@ -2,72 +2,141 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
-  text-align: center;
-  padding: 1rem;
-}
-
-.heading,
-.text {
-  padding: 0;
-  margin: 0;
-}
-
-.text {
-  font-size: 1.2rem;
-  padding-bottom: 2rem;
+  padding: 2rem 1rem;
+  background: #f6f6f7;
 }
 
 .content {
-  display: grid;
-  gap: 2rem;
+  width: 100%;
+  max-width: 28rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 2.5rem 2rem;
+}
+
+.heading {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+.text {
+  margin: 0 0 2rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #4a4a4a;
 }
 
 .form {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin: 0 auto;
+  flex-direction: column;
+  align-items: stretch;
   gap: 1rem;
+  margin-bottom: 2rem;
+  text-align: left;
 }
 
 .label {
   display: grid;
-  gap: 0.2rem;
-  max-width: 20rem;
-  text-align: left;
-  font-size: 1rem;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1a1a1a;
 }
 
 .input {
-  padding: 0.4rem;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #5c5c5c;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
+}
+
+.hint {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #6b7280;
 }
 
 .button {
-  padding: 0.4rem;
+  margin-top: 0.25rem;
+  padding: 0.65rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #333;
 }
 
 .list {
   list-style: none;
   padding: 0;
-  padding-top: 3rem;
   margin: 0;
-  display: flex;
-  gap: 2rem;
+  text-align: left;
+  display: grid;
+  gap: 1rem;
 }
 
 .list > li {
-  max-width: 20rem;
-  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4a4a4a;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.list > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1a1a1a;
+}
+
+.footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.footer a {
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #1a1a1a;
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 50rem) {
-  .list {
-    display: block;
-  }
-
-  .list > li {
-    padding-bottom: 1rem;
+  .content {
+    padding: 2rem 1.5rem;
   }
 }
