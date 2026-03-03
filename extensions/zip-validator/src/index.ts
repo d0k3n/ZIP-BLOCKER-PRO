@@ -15,18 +15,27 @@ export function run(input: RunInput): FunctionRunResult {
   for (let i = 0; i < deliveryGroups.length; i++) {
     const group = deliveryGroups[i];
     const deliveryAddress = group.deliveryAddress;
-    
+
     if (!deliveryAddress) {
       continue;
     }
-    
-    const shippingZip = deliveryAddress.zip;
+
+    // Normalize zip (trim, uppercase) so blocklist matches regardless of popup vs main form input
+    const shippingZip = deliveryAddress.zip?.trim().toUpperCase() ?? "";
 
     // 3. The Validation Logic
-    if (shippingZip && blockedZips.includes(shippingZip)) {
+    const normalizedBlocked = blockedZips.map((z: string) => String(z).trim().toUpperCase());
+    if (shippingZip && normalizedBlocked.includes(shippingZip)) {
+      const message = "We cannot ship to " + shippingZip + ". Please use a different address.";
+      // Field-level target: highlights the zip field (works when address is on main page)
       errors.push({
-        localizedMessage: "We cannot ship to " + shippingZip + ". Please use a different address.",
-        target: "$.cart.deliveryGroups[0].deliveryAddress.zip",
+        localizedMessage: message,
+        target: `$.cart.deliveryGroups[${i}].deliveryAddress.zip`,
+      });
+      // Cart-level target: shows error on main checkout so it's visible when zip is in a popup/modal
+      errors.push({
+        localizedMessage: message,
+        target: "$.cart",
       });
     }
   }
