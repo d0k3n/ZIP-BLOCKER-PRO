@@ -127,6 +127,19 @@ When you're ready to set up your app in production, you can follow [our deployme
 
 When you reach the step for [setting up environment variables](https://shopify.dev/docs/apps/deployment/web#set-env-vars), you also need to set the variable `NODE_ENV=production`.
 
+## Zip validation (checkout extension)
+
+The zip-blocker validation runs **on Shopify's servers** when the buyer tries to proceed (e.g. "Continue to payment"), not while they type in the address form. So:
+
+- The error will **not** show inside the "Edit address" popup.
+- After entering a blocked zip and clicking **Save address**, the buyer must click **Continue** / **Go to payment**; the error then appears on the **main checkout page** (and blocks proceeding).
+
+To deploy extension changes (required for validation updates to take effect):
+
+```bash
+shopify app deploy
+```
+
 ## Gotchas / Troubleshooting
 
 ### Database tables don't exist
